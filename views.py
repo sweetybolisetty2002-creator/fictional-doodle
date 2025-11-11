@@ -8,7 +8,7 @@ from azure.storage.blob import BlobServiceClient
 views = Blueprint('views', __name__)
 
 def get_blob_service():
-    account_url = f"https://{current_app.config['BLOB_ACCOUNT']}.blob.core.windows.net"
+    account_url = f"https://{current_app.config['images11']}.blob.core.windows.net"
     credential = current_app.config['BLOB_STORAGE_KEY']
     return BlobServiceClient(account_url=account_url, credential=credential)
 
