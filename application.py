@@ -1,20 +1,15 @@
-from flask import Flask
 
-application = Flask(__name__)
+"""
+This script runs the FlaskWebProject application using a development server.
+"""
 
-@app.route('/')
-def home():
-    return "Welcome to the Article CMS!"
-
-@app.route('/getAToken')
-def get_a_token():
-    # Placeholder for OAuth callback logic
-    return "OAuth token endpoint reached!"
-
-@app.route('/login')
-def login():
-    # Placeholder for login page or OAuth start
-    return "Login page route."
+from os import environ
+from FlaskWebProject import app
 
 if __name__ == '__main__':
-    app.run()
+    HOST = environ.get('SERVER_HOST', 'localhost')
+    try:
+        PORT = int(environ.get('SERVER_PORT', '5555'))
+    except ValueError:
+        PORT = 5555
+    app.run(HOST, PORT, ssl_context='adhoc')
