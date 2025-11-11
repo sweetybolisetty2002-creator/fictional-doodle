@@ -14,19 +14,22 @@ def get_a_token():
 @app.route('/login')
 def login():
     # Replace with your actual Azure AD values:
-    CLIENT_ID = '9277e643-3ae3-4421-b668-7aa47a48acc4'  # e.g. 'b1234567-xxxx-xxxx-xxxx-xxxxxxxx'
-    TENANT_ID = 'f958e84a-92b8-439f-a62d-4f45996b6d07'  # e.g. 'e1234567-xxxx-xxxx-xxxx-xxxxxxxx'
-    REDIRECT_URI = 'https://cmswebapp-hxanbnh8b6e0fvdf.canadacentral-01.azurewebsites.net/getAToken'  # e.g. 'https://udacitycms.azurewebsites.net/getAToken'
+    CLIENT_ID = "9277e643-3ae3-4421-b668-7aa47a48acc4"
+    TENANT_ID = "f958e84a-92b8-439f-a62d-4f45996b6d07"
+    REDIRECT_URI = "https://cmswebapp-hxanbnh8b6e0fvdf.canadacentral-01.azurewebsites.net/getAToken"
+
+    # Correctly formatted Azure OAuth URL
     AUTH_URL = (
-        f"https://login.microsoftonline.com/{f958e84a-92b8-439f-a62d-4f45996b6d07}/oauth2/v2.0/authorize"
-        f"?client_id={9277e643-3ae3-4421-b668-7aa47a48acc4}"
+        f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/authorize"
+        f"?client_id={CLIENT_ID}"
         f"&response_type=code"
-        f"&redirect_uri={https://cmswebapp-hxanbnh8b6e0fvdf.canadacentral-01.azurewebsites.net/getAToken}"
+        f"&redirect_uri={REDIRECT_URI}"
         f"&response_mode=query"
         f"&scope=openid+profile+email"
         f"&state=12345"
     )
+
     return redirect(AUTH_URL)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
