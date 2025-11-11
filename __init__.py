@@ -26,3 +26,5 @@ def create_app():
     app.register_blueprint(views)
     return app
 
+# Instantiate app for Azure (and imports)
+app = create_app()
